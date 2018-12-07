@@ -147,12 +147,14 @@
 	<transmission name="gripper_extension_trans" type="SimpleTransmission">
 		<type>transmission_interface/SimpleTransmission</type>
 			<actuator name="gripper_extension_motor">
+				<hardwareInterface>PositionJointInterface</hardwareInterface>
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
 			<joint name="gripper_extension">
 				<hardwareInterface>PositionJointInterface</hardwareInterface>
 			</joint>
 	</transmission>
+	
 
 	<xacro:macro name="gripper" params="prefix reflect">
 		<joint name="${prefix}_gripper_joint" type="revolute">
@@ -178,13 +180,15 @@
 			<xacro:default_inertial mass="0.05"/>
 		</link>
 
+
 		<transmission name="${prefix}_gripper_trans" type="SimpleTransmission">
 			<type>transmission_interface/SimpleTransmission</type>
 				<actuator name="${prefix}_gripper_motor">
 					<mechanicalReduction>1</mechanicalReduction>
+					<hardwareInterface>PositionJointInterface</hardwareInterface>
 				</actuator>
 			<joint name="${prefix}_gripper_joint">
-			<hardwareInterface>PositionJointInterface</hardwareInterface>
+				<hardwareInterface>PositionJointInterface</hardwareInterface>
 			</joint>
 		</transmission>
 
