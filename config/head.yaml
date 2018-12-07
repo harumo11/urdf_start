@@ -1,0 +1,7 @@
+# Now that we set which joint should be controll in urdf.
+# So, Now we try to set how to control for those joint.
+#
+# This line means we will use JointPositionController from position_controllers package
+# NOTE the hardware interface in the URDF for joint muches the controller type
+type:    "position_controllers/JointPositionController"
+joint:    "head_swivel"
