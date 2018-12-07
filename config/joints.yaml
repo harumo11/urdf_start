@@ -1,0 +1,3 @@
+# This joint_state_controller publish all information about the robot joints as ROS topic
+type:    "joint_state_controller/JointStateController"
+publish_rate:    50

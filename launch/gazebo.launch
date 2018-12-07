@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<launch>
+	<!-- args to set config -->
+	<arg name="paused"			default="false"/>
+	<arg name="use_sim_time"	default="true"/>
+	<arg name="gui"				default="true"/>
+	<!-- headless is deprecated!! now is recording -->
+	<arg name="recording"		default="false"/>
+	<arg name="debug"			default="false"/>
+	<arg name="model"			default="$(find urdf_start)/urdf/09-publishjoints.urdf.xacro"/>
+
+	<!-- launch empty gazebo world -->
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="debug"			value="$(arg debug)"/>
+		<arg name="gui"				value="$(arg gui)"/>
+		<arg name="paused"			value="$(arg paused)"/>
+		<arg name="use_sim_time"    value="$(arg use_sim_time)"/>
+		<arg name="recording"    	value="$(arg recording)"/>
+	</include>
+
+	<!-- load urdf.xacro file as robot_description -->
+	<param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+
+	<!-- node urdf model spawner in gazebo -->
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+	      args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen"/>
+
+	<!-- robot state publisher -->
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+	<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/>
+
+</launch>
