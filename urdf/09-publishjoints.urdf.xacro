@@ -240,6 +240,7 @@
 
 	<!--Gazebo plugin for ROS Control -->
 	<!--Joint state publisher in Gazebo-->
+	<!--Connection between ROS and gazebo-->
 	<gazebo>
 		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
 			<robotNameSpace>/</robotNameSpace>

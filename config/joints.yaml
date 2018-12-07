@@ -1,3 +1,16 @@
 # This joint_state_controller publish all information about the robot joints as ROS topic
+# Now that I linked between ROS and Gazebo, I have to specify a code that we want to run within gazebo
+# the code is called controller. The controller are loaded initially into ROS parameter space as a sentence.
+#
+#           ROS                                     Gazebo
+#   -------------------------              ------------------------
+#   |                        |             |                        |
+#   | parameter              |             | Code                   |
+#   | (config of controller) |-------------| (ontroller)            |
+#   |                        |             |                        |
+#   |                        |             |                        |
+#   -------------------------              -------------------------
+#
+#
 type:    "joint_state_controller/JointStateController"
 publish_rate:    50
